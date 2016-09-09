@@ -1,0 +1,23 @@
+﻿@model Exemplo1.Models.Cliente
+
+@{
+    ViewBag.Title = "Inserir Novo Cliente";
+}
+
+<h2>Inserir</h2>
+
+@using (@Html.BeginForm())
+{
+
+
+<div class="form-group">
+    @Html.LabelFor(cli => cli.Nome)
+    @Html.EditorFor(cli => cli.Nome)
+</div>
+<div class="form-group">
+  @Html.LabelFor(cli => cli.Idade)
+    @Html.EditorFor(cli => cli.Idade)
+</div>
+
+<p><input type="submit" class="btn btn-default" value="Inserir"></p>
+}

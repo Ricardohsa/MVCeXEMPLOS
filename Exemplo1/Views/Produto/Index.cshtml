@@ -1,0 +1,27 @@
+﻿@model List<Exemplo1.Models.Produto>
+
+@{
+    ViewBag.Title = "Listagem de Produtos";
+}
+
+<h2>Listagem de Produtos</h2>
+
+<table>
+    <div class="jumbotron text-center">
+        <h1>Lista de Produtos</h1>
+    </div>
+    <tr>
+        <th>Nome</th>        
+        <th>Descriçao</th>
+        <th>Preço</th>
+    </tr>
+@foreach (var produto in Model)
+{
+    <tr>
+        <td>@Html.DisplayFor(p => produto.Nome)</td> 
+        <td>@Html.DisplayFor(p => produto.Descricao)</td> 
+        <td>@Html.DisplayFor(p => produto.Preco)</td> 
+    </tr>
+}
+</table>
+

@@ -1,0 +1,33 @@
+﻿@model List<Exemplo1.Models.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<h2>Listagem de Clientes</h2>
+@if (TempData["Mensagem"] != null)
+{
+    <p> <strong> @TempData["Mensagem"] </strong></p>
+}
+<div>
+    @Html.ActionLink("Inserir Novo Cliente", "Inserir")
+</div>
+
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Ações</th>
+    </tr>
+    @foreach (var cliente in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(f => cliente.Nome)</td>
+            <td>@Html.DisplayFor(f => cliente.Idade)</td>
+            <td>@Html.ActionLink("Alterar", "Alterar", new { id = cliente.ClienteId }) </td>
+            <td>@Html.ActionLink("Excluir", "Delete", new { id = cliente.ClienteId }) </td>
+        </tr>
+    }
+</table>
+

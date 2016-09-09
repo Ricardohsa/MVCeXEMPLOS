@@ -1,0 +1,25 @@
+﻿@model Exemplo1.Models.Produto
+
+@{
+    ViewBag.Title = "Inserir";
+}
+
+<h2>Inserir novo Produto</h2>
+
+@using (Html.BeginForm())
+{
+<div>
+    @Html.LabelFor(prod => prod.Nome)
+    @Html.EditorFor(prod => prod.Nome)
+ </div>
+<div>
+    @Html.LabelFor(prod => prod.Descricao)
+    @Html.EditorFor(prod => prod.Descricao)
+</div>
+<div>
+    @Html.LabelFor(prod => prod.Preco)
+    @Html.EditorFor(prod => prod.Preco)
+</div>
+
+<p><input type="submit" value="Inserir"/></p>
+}
