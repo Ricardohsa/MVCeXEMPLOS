@@ -53,5 +53,10 @@ namespace Exemplo1.Models
         {
             return produtos;
         }
+
+        public Produto RetornaProdutoPorId(int id)
+        {
+            return produtos.Where(p => p.ProdutoId == id).First();
+        }
     }
 }
