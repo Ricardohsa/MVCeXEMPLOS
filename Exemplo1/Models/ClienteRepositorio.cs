@@ -63,8 +63,7 @@ namespace Exemplo1.Models
 
         public void Excluir(Cliente cliente)
         {
-            //var cli = clientes.Where(c => c.ClienteId == cliente.ClienteId).First();
-
+           
             clientes.Remove(cliente);            
             
         }
