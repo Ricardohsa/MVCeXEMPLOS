@@ -1,0 +1,25 @@
+﻿@model Exemplo1.Models.Produto
+
+@{
+    ViewBag.Title = "Alterar";
+}
+
+<h2>Alterar</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(prod => prod.Descricao)
+        @Html.EditorFor(prod => prod.Descricao)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(prod => prod.Nome)
+        @Html.EditorFor(prod => prod.Nome)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(prod => prod.Preco)
+        @Html.EditorFor(prod => prod.Preco)
+    </div>
+
+<p><input type="submit" class="btn btn-default" value="Alterar"></p>
+}

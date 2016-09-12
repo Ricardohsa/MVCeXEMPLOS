@@ -39,5 +39,12 @@ namespace Exemplo1.Controllers
 
             return View("Index", produtos);
         }
+
+        public ActionResult Alterar (int id)
+        {
+            var prod = produtorepositorio.RetornaProdutoPorId(id);
+
+            return View();
+        }
     }
 }
