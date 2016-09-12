@@ -136,6 +136,7 @@
     <Content Include="Views\Cliente\Delete.cshtml" />
     <Content Include="Views\PaginaErro\PaginaNaoEncontrada.cshtml" />
     <Content Include="Views\Produto\Alterar.cshtml" />
+    <Content Include="Views\Produto\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

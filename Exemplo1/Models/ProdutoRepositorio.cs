@@ -58,5 +58,17 @@ namespace Exemplo1.Models
         {
             return produtos.Where(p => p.ProdutoId == id).First();
         }
+
+        public void Alterar(Produto produto)
+        {
+            produtos.Where(prod => prod.ProdutoId == produto.ProdutoId).First().Descricao = produto.Descricao;
+            produtos.Where(prod => prod.ProdutoId == produto.ProdutoId).First().Nome = produto.Nome;
+            produtos.Where(prod => prod.ProdutoId == produto.ProdutoId).First().Preco = produto.Preco;
+        }
+
+        public void Excluir(Produto produto)
+        {
+            produtos.Remove(produto);
+        }
     }
 }

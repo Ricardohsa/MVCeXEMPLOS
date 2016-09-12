@@ -1,0 +1,25 @@
+﻿@model Exemplo1.Models.Produto
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(prod => prod.ProdutoId)
+
+    <div class="form-group">        
+        @Html.DisplayFor(prod => prod.Descricao)
+    </div>
+    <div class="form-group">        
+        @Html.DisplayFor(prod => prod.Nome)
+    </div>
+    <div class="form-group">        
+        @Html.DisplayFor(prod => prod.Preco)
+    </div>
+
+    <p><input type="submit" class="btn btn-default" value="Delete"></p>
+
+}

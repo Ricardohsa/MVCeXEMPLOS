@@ -30,21 +30,64 @@ namespace Exemplo1.Controllers
         [HttpPost]
         public ActionResult Inserir(Produto produto)
         {
-            var pId = produtorepositorio.RetornaProduto().OrderByDescending(p => p.ProdutoId).First();
+            if (ModelState.IsValid)
+            {
+                var pId = produtorepositorio.RetornaProduto().OrderByDescending(p => p.ProdutoId).First();
 
-            produto.ProdutoId = pId.ProdutoId + 1;
-            produtorepositorio.Inserir(produto);
+                produto.ProdutoId = pId.ProdutoId + 1;
+                produtorepositorio.Inserir(produto);
 
-            var produtos = produtorepositorio.RetornaProduto();
+                var produtos = produtorepositorio.RetornaProduto();
 
-            return View("Index", produtos);
+                return View("Index", produtos);
+            }
+            else
+            {
+                return View();
+            }
+            
         }
 
         public ActionResult Alterar (int id)
         {
             var prod = produtorepositorio.RetornaProdutoPorId(id);
 
-            return View();
+            return View(prod);
+        }
+
+        [HttpPost]
+        public ActionResult Alterar (Produto produto)
+        {
+            if (ModelState.IsValid)
+            {
+                produtorepositorio.Alterar(produto);
+
+                var produtos = produtorepositorio.RetornaProduto();
+
+                return View("Index", produtos);
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var produto = produtorepositorio.RetornaProdutoPorId(id);
+
+            return View(produto);
+        }
+
+
+        [HttpPost]
+        public ActionResult Delete(Produto produto)
+        {
+            produtorepositorio.Excluir(produto);
+
+            var produtos = produtorepositorio.RetornaProduto();
+
+            return View("Index", produtos);
         }
     }
 }

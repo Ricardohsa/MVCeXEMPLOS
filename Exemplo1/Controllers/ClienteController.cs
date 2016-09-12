@@ -35,17 +35,26 @@ namespace Exemplo1.Controllers
         [HttpPost]
         public ActionResult Inserir(Cliente cliente)
         {
-            var cli = clienterepositorio.RetornarTodos().OrderByDescending(c => c.ClienteId).First();
+            if (ModelState.IsValid)
+            {
+                var cli = clienterepositorio.RetornarTodos().OrderByDescending(c => c.ClienteId).First();
 
-            cliente.ClienteId = cli.ClienteId + 1;
-            clienterepositorio.Inserir(cliente);
+                cliente.ClienteId = cli.ClienteId + 1;
+                clienterepositorio.Inserir(cliente);
 
-            TempData["Mensagem"] = "Cliente Incluido com Sucesso";
+                TempData["Mensagem"] = "Cliente Incluido com Sucesso";
 
-            var clientes = RepositorioFactory.InstanciarRepositorio()
-                .RetornarTodos();
+                var clientes = RepositorioFactory.InstanciarRepositorio()
+                    .RetornarTodos();
 
-            return View("Index", clientes);
+                return View("Index", clientes);
+            }
+            else
+            {
+                return View();
+            }
+            
+
         }
 
         public ActionResult Alterar(int id)
@@ -58,13 +67,20 @@ namespace Exemplo1.Controllers
         [HttpPost]
         public ActionResult Alterar(Cliente cliente)
         {
-            clienterepositorio.alterar(cliente);
+            if (ModelState.IsValid)
+            {
+                clienterepositorio.alterar(cliente);
 
-            TempData["Mensagem"] = "Cliente Alterado com Sucesso";
+                TempData["Mensagem"] = "Cliente Alterado com Sucesso";
 
-            var clientes = clienterepositorio.RetornarTodos();
+                var clientes = clienterepositorio.RetornarTodos();
 
-            return View("Index", clientes);
+                return View("Index", clientes);
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult Delete(int id)
